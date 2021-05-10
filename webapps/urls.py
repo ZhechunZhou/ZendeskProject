@@ -14,10 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from zendesk_project import views
+from django.urls import path, include
+from ticket_visualization import views
 
 urlpatterns = [
-    path('', views.home, name="home")
-
+    path('', views.home, name="home"),
+    path('ticket_visualization/', include('ticket_visualization.urls')),
 ]
