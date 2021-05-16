@@ -4,4 +4,12 @@
 {% block title %} Welcome {% endblock %}
 
 {% block content %}
-    <div>TODO</div>{% endblock %}
+    <h3>have a look at the following links</h3>
+        <ul>
+            <li>
+                <a href="https://github.com/ZhechunZhou/ZendeskProject">this is the link to the github repository </a>
+            </li>
+            <li>
+                <a href="{% url 'display_tickets' %}">this is the link to the ticket display </a>
+            </li>
+        </ul>{% endblock %}

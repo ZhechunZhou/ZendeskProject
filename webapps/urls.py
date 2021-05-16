@@ -18,7 +18,6 @@ from django.urls import path, include
 from ticket_visualization import views
 
 urlpatterns = [
-    path('', views.home, name="home"),
     path('ticket_visualization/', include('ticket_visualization.urls')),
     # path('ticket_client/', include('ticket_client.urls')),
 ]
