@@ -16,16 +16,14 @@ def update_data():
     This function read from Zendesk web Api to get the Latest tickets.
     It only add new tickets and do not delete the tickets from the database,
     for the ticket list collected may not be complete.
-    :param request:
-    :return: updated ticket list
     """
     # list of ids of tickets in the database
 
     response = requests.get('https://zhechundemo.zendesk.com/api/v2/tickets.json',
                             auth=('zhechunzhou@gmail.com', 'PAi31415926'))
     tickets = response.json()['tickets']
-
     for ticket in tickets:
+
         if not Ticket.objects.filter(id=ticket['id']).exists():
             new_ticket = Ticket(id=ticket['id'], url=ticket['id'], created_at=ticket['created_at'],
                                 description=ticket['description'], due_at=ticket['due_at'],
@@ -34,9 +32,8 @@ def update_data():
                                 priority=ticket['priority'], status=ticket['status'],
                                 subject=ticket['subject'], type=ticket['type'],
                                 updated_at=ticket['updated_at'])
-            print(new_ticket)
             new_ticket.save()
-        return
+    return
 
 
 def get_tickets(request):
@@ -63,7 +60,6 @@ def get_tickets(request):
                 "%-m/%-d/%Y %-I:%-M %p"),
             'url': ticket.url,
         }
-        print(ticket_json)
         response_data.append(ticket_json)
 
     response_json = json.dumps(response_data)
