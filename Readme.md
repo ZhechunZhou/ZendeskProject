@@ -6,7 +6,6 @@ This is a Django project displaying Zendesk tickets. Due to this week is my exam
 
 >#### Run in local
 >
->1. install Django. Assume you have python3 in your machine. use **pip install django** to install it.
 >2. use command **python manage.py runserver** in termianl to start the project
 >3.  Open http://127.0.0.1:8000/ticket_visualization/ in your browser
 >
