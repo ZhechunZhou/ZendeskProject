@@ -21,6 +21,11 @@ def update_data():
 
     response = requests.get('https://zhechundemo.zendesk.com/api/v2/tickets.json',
                             auth=('zhechunzhou@gmail.com', 'PAi31415926'))
+    if response is None:
+        return
+    if response.status_code == 403:
+        print("not authorized")
+        return
     tickets = response.json()['tickets']
     for ticket in tickets:
 
